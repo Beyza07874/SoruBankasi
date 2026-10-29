@@ -10,6 +10,14 @@
   <ItemGroup>
     <ProjectReference Include="..\SoruBankasi.Business\SoruBankasi.Business.csproj" />
     <ProjectReference Include="..\SoruBankasi.Entities\SoruBankasi.Entities.csproj" />
+    <ProjectReference Include="..\SoruBankasi.Data\SoruBankasi.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
