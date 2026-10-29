@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Kazanım Bazlı Soru Bankası ve Otomotik Sınav/Kazanım Bazlı Soru Bankası ve Otomotik Sınav.csproj" />
+  <Project Path="SoruBankasi.Business/SoruBankasi.Business.csproj" />
+  <Project Path="SoruBankasi.Data/SoruBankasi.Data.csproj" />
+  <Project Path="SoruBankasi.Entities/SoruBankasi.Entities.csproj" />
+</Solution>
