@@ -23,3 +23,74 @@
 
 ## Geliştirici
 Beyza Genç – Bingöl Üniversitesi, Bilgisayar Programcılığı
+
+## Veri Modeli (ER Diyagramı)
+
+```mermaid
+erDiagram
+  KULLANICI ||--o{ SORU : yazar
+  KULLANICI ||--o{ SINAV : hazirlar
+  KULLANICI ||--o{ SONUC : girer
+  KAZANIM ||--o{ SORU : etiketler
+  SORU ||--o{ SECENEK : icerir
+  SINAV ||--o{ SINAVSORU : icerir
+  SORU ||--o{ SINAVSORU : yer_alir
+  SINAV ||--o{ SONUC : uretir
+  SONUC ||--o{ CEVAP : icerir
+  SORU ||--o{ CEVAP : cevaplanir
+  KULLANICI {
+    int Id PK
+    string AdSoyad
+    string Email
+    string ParolaHash
+    string Rol
+  }
+  KAZANIM {
+    int Id PK
+    string Kod
+    string Aciklama
+    string Ders
+  }
+  SORU {
+    int Id PK
+    int KazanimId FK
+    int OgretmenId FK
+    string Metin
+    string Tip
+    int Zorluk
+    string AnahtarNoktalar
+  }
+  SECENEK {
+    int Id PK
+    int SoruId FK
+    string Metin
+    bool DogruMu
+  }
+  SINAV {
+    int Id PK
+    int OgretmenId FK
+    string Baslik
+    datetime Tarih
+    int SureDk
+  }
+  SINAVSORU {
+    int SinavId PK
+    int SoruId PK
+    int SiraNo
+    int Puan
+  }
+  SONUC {
+    int Id PK
+    int SinavId FK
+    int OgrenciId FK
+    decimal ToplamPuan
+  }
+  CEVAP {
+    int Id PK
+    int SonucId FK
+    int SoruId FK
+    string VerilenCevap
+    decimal Puan
+    decimal AiOnPuan
+  }
+```
