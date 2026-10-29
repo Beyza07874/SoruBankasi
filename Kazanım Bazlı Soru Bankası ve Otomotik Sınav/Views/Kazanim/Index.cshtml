@@ -1,0 +1,45 @@
+﻿@model List<SoruBankasi.Entities.Kazanim>
+@{
+    ViewData["Title"] = "Kazanımlar";
+}
+
+<h2>Kazanımlar</h2>
+
+@if (TempData["Mesaj"] != null)
+{
+    <div class="alert alert-info">@TempData["Mesaj"]</div>
+}
+
+<form method="get" class="d-flex gap-2 mb-3">
+    <input name="arama" value="@ViewBag.Arama" class="form-control" placeholder="Kod, açıklama veya ders ara" />
+    <button type="submit" class="btn btn-secondary">Ara</button>
+    <a asp-action="Ekle" class="btn btn-primary text-nowrap">Yeni kazanım</a>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Kod</th>
+            <th>Ders</th>
+            <th>Açıklama</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>@k.Kod</td>
+                <td>@k.Ders</td>
+                <td>@k.Aciklama</td>
+                <td class="text-end text-nowrap">
+                    <a asp-action="Duzenle" asp-route-id="@k.Id" class="btn btn-sm btn-outline-primary">Düzenle</a>
+                    <form asp-action="Sil" asp-route-id="@k.Id" method="post" class="d-inline"
+                          onsubmit="return confirm('Bu kazanımı silmek istediğinize emin misiniz?');">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

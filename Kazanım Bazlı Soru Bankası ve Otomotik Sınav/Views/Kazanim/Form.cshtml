@@ -1,0 +1,30 @@
+﻿@model SoruBankasi.Entities.Kazanim
+@{
+    var yeniMi = Model.Id == 0;
+    ViewData["Title"] = yeniMi ? "Yeni kazanım" : "Kazanımı düzenle";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="@(yeniMi ? "Ekle" : "Duzenle")" method="post" style="max-width: 600px;">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Kod" class="form-label">Kod</label>
+        <input asp-for="Kod" class="form-control" placeholder="M.9.1.1" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Ders" class="form-label">Ders</label>
+        <input asp-for="Ders" class="form-control" placeholder="Matematik" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Aciklama" class="form-label">Açıklama</label>
+        <textarea asp-for="Aciklama" class="form-control" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>
