@@ -94,3 +94,16 @@ erDiagram
     decimal AiOnPuan
   }
 ```
+
+## Mimari Şema
+
+```mermaid
+flowchart TD
+  U[Kullanıcı / Tarayıcı] --> W[Web Katmanı<br/>Controller + View]
+  W --> B[SoruBankasi.Business<br/>İş kuralları]
+  B --> D[SoruBankasi.Data<br/>EF Core / DbContext]
+  D --> DB[(SQL Server)]
+  E[SoruBankasi.Entities<br/>Varlık sınıfları] -.-> W
+  E -.-> B
+  E -.-> D
+```
